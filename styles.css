@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: black;
+  background-color: white;
+}
+
+h1 {
+  color: rgb(199, 6, 6);
+}
+
+h2 {
+  color: rgb(199, 6, 6);
+}
+
+.text {
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 600;
+  transition: color 0.5s;
+  position: relative;
+}
+/* chữ chạy left và right */
+.text::before {
+  position: absolute;
+  content: attr(data-text);
+  display: flex;
+  justify-content: flex-end;
+  top: 0;
+  right: 0;
+  color: blue;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 0.5s;
+}
+.text:hover::before {
+  width: 100%;
+  left: 0;
+  justify-content: flex-start;
+}
+
+.text-1 {
+  display: inline-block;
+  margin: 30px 0;
+  font-size: 30px;
+  font-weight: 600;
+  transition: color 0.5s;
+  position: relative;
+}
+
+.text-1::before {
+  position: absolute;
+  content: attr(data-text);
+
+  top: 0;
+  left: 0;
+  color: red;
+  height: 0%;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: height 0.5s ease-in-out;
+  /*    background: red; */
+}
+.text-1:hover::before {
+  height: 100%;
+}
+
+/* kiểu 2 */
+.text-2 {
+  display: inline-block;
+  margin: 30px 0;
+  font-size: 30px;
+  font-weight: 600;
+  transition: color 0.5s;
+  position: relative;
+}
+
+.text-2::before {
+  position: absolute;
+  content: attr(data-text);
+  display: flex;
+  align-items: flex-end;
+  bottom: 0;
+  left: 0;
+  color: rgb(172, 14, 87);
+  height: 0%;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: height 0.5s ease-in-out;
+  /*    background: red; */
+}
+.text-2:hover::before {
+  height: 100%;
+  top: 0;
+  align-items: flex-start;
+}
+
+/*  kiểu 3*/
+/* Ý tưởng là đặt màu nền ban đầu là black, sử dụng clip-text và text transparent hiển thị màu nền cho phần chữ thôi (màu text trở thành đen). Màu nền bao gồm black và orange với width 200%, ban đầu vị trí background ở bên phải, khi hover chạy background sang trái với transition, text sẽ chuyển dần sang màu cam. */
+.text-3 {
+  /* để inline chạy từng dòng */
+  display: inline;
+  font-size: 30px;
+  font-weight: 600;
+  background-image: linear-gradient(to right, orange 50%, black 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: 200% 100%;
+  background-position: right top;
+  transition: background-position 0.5s ease-in-out;
+}
+
+.text-3:hover {
+  background-position: left top;
+}
+
+/* giải pháp 2 */
+.d-block {
+  display: block !important;
+}
